@@ -1,0 +1,12 @@
+package com.taskmanager.backend.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RequestMapping("/backend/api/tasks")
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
+public class TaskController {
+	
+
+}

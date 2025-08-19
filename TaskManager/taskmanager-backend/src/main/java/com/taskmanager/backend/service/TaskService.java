@@ -1,0 +1,55 @@
+package com.taskmanager.backend.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.taskmanager.backend.model.Task;
+import com.taskmanager.backend.repository.TaskRepository;
+
+@Service
+public class TaskService {
+	private final TaskRepository taskRepo;
+	
+	@Autowired
+	TaskService(TaskRepository taskRepo) {
+		this.taskRepo = taskRepo;
+	}
+	
+	public Task createTask(Task t) {
+		return taskRepo.save(t);
+	}
+	
+	public List<Task> getTasks() {
+		return taskRepo.findAll();
+	}
+	
+	public Task getTaskById(Long id) {
+		return taskRepo.findById(id).orElse(null);
+	}
+	
+	public Task updateTask(Long id, Task updatedTask) {
+		Task actualTask = taskRepo.findById(id).orElse(null);
+		
+		if(actualTask != null) 
+		{
+			actualTask.setTaskTitle(updatedTask.getTaskTitle());
+			actualTask.setDeadline(updatedTask.getDeadline());
+			actualTask.setPriority(updatedTask.getPriority());
+			actualTask.setStatus(updatedTask.getStatus());
+			
+			return taskRepo.save(actualTask);
+		}
+		
+		return null;
+	}
+	
+	public void deleteTask(Long id) {
+		taskRepo.deleteById(id);
+	}
+	
+	
+	
+
+}

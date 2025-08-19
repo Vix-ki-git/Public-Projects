@@ -1,0 +1,27 @@
+package com.taskmanager.backend.model;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Task {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String task_title;
+	private LocalDate deadline;
+	
+	@Enumerated(EnumType.STRING)
+	private Priority priority_level;
+	
+	@Enumerated(EnumType.STRING)
+	private Status current_status;
+	
+	public enum Priority { LOW, MEDIUM, HIGH }
+	public enum Status { COMPLETED, PENDING, DOING_NOW }
+	
+	
+
+}

@@ -1,0 +1,10 @@
+package com.taskmanager.backend.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RequestMapping("/backend/api/tasks")
+@RestController
+public class TaskController {
+	
+
+}

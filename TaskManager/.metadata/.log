@@ -1,0 +1,768 @@
+!SESSION 2025-08-15 20:37:14.362 -----------------------------------------------
+eclipse.buildId=4.34.0.20241128-0756
+java.version=23.0.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.eclemma.core 4 0 2025-08-15 20:37:17.380
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.eclemma.core [320]
+  Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+       org.jacoco.core [957]
+         Unresolved requirement: Import-Package: org.objectweb.asm.tree; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm.tree; bundle-symbolic-name="org.objectweb.asm.tree"; bundle-version="9.7.1"; version="9.7.1"; uses:="org.objectweb.asm,org.objectweb.asm.signature"
+              org.objectweb.asm.tree [969]
+                Unresolved requirement: Import-Package: org.objectweb.asm; version="9.7.1"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                     org.objectweb.asm [967]
+                       No resolution report for the bundle.                Unresolved requirement: Import-Package: org.objectweb.asm.signature; version="9.7.1"
+                  -> Export-Package: org.objectweb.asm.signature; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+         Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+  Unresolved requirement: Require-Bundle: org.jacoco.agent; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.agent; bundle-version="0.8.12.202403310830"
+       org.jacoco.agent [956]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.jacoco.report; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.report; bundle-version="0.8.12.202403310830"
+       org.jacoco.report [958]
+         Unresolved requirement: Import-Package: org.jacoco.core; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"
+         Unresolved requirement: Import-Package: org.jacoco.core.runtime; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.runtime; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.objectweb.asm"
+         Unresolved requirement: Import-Package: org.jacoco.core.analysis; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.analysis; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.jacoco.core.internal.analysis"
+         Unresolved requirement: Import-Package: org.jacoco.core.data; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.data; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.internal.data"
+         Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"] because it is exposed to package 'org.objectweb.asm' from resources org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"] and org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"] via two dependency chains.
+
+Chain 1:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"]
+
+Chain 2:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm.commons)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package=org.objectweb.asm.commons; uses:=org.objectweb.asm
+  org.objectweb.asm.commons [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm.commons"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(version>=9.7.1))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"]
+	at org.eclipse.osgi.container.Module.start(Module.java:493)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2102)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:143)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2093)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2033)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1996)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1912)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.eclipse.eclemma.ui 4 0 2025-08-15 20:37:17.402
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.eclemma.ui [322]
+  Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+       org.jacoco.core [957]
+         Unresolved requirement: Import-Package: org.objectweb.asm.tree; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm.tree; bundle-symbolic-name="org.objectweb.asm.tree"; bundle-version="9.7.1"; version="9.7.1"; uses:="org.objectweb.asm,org.objectweb.asm.signature"
+              org.objectweb.asm.tree [969]
+                Unresolved requirement: Import-Package: org.objectweb.asm; version="9.7.1"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                     org.objectweb.asm [967]
+                       No resolution report for the bundle.                Unresolved requirement: Import-Package: org.objectweb.asm.signature; version="9.7.1"
+                  -> Export-Package: org.objectweb.asm.signature; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+         Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+  Unresolved requirement: Require-Bundle: org.eclipse.eclemma.core
+    -> Bundle-SymbolicName: org.eclipse.eclemma.core; bundle-version="3.1.9.202405260028"; singleton:="true"
+       org.eclipse.eclemma.core [320]
+         Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+         Unresolved requirement: Require-Bundle: org.jacoco.agent; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.agent; bundle-version="0.8.12.202403310830"
+              org.jacoco.agent [956]
+                No resolution report for the bundle.         Unresolved requirement: Require-Bundle: org.jacoco.report; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.report; bundle-version="0.8.12.202403310830"
+              org.jacoco.report [958]
+                Unresolved requirement: Import-Package: org.jacoco.core; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"
+                Unresolved requirement: Import-Package: org.jacoco.core.runtime; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.runtime; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.objectweb.asm"
+                Unresolved requirement: Import-Package: org.jacoco.core.analysis; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.analysis; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.jacoco.core.internal.analysis"
+                Unresolved requirement: Import-Package: org.jacoco.core.data; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.data; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.internal.data"
+                Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"] because it is exposed to package 'org.objectweb.asm' from resources org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"] and org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"] via two dependency chains.
+
+Chain 1:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"]
+
+Chain 2:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm.commons)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package=org.objectweb.asm.commons; uses:=org.objectweb.asm
+  org.objectweb.asm.commons [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm.commons"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(version>=9.7.1))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"]
+	at org.eclipse.osgi.container.Module.start(Module.java:493)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2102)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:143)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2093)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2033)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1996)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1912)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-15 20:37:17.593
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.equinox.app 0 0 2025-08-15 20:37:18.157
+!MESSAGE Product org.eclipse.epp.package.jee.product could not be found.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-15 20:37:28.895
+!MESSAGE Logback config file: /home/vix/Desktop/ResumeProjects/TaskManager/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.0.20241001-1350.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-08-15 20:37:29.368
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-08-15 20:37:29.368
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-08-15 20:37:29.721
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-08-15 20:37:29.721
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.oomph.setup.core 2 0 2025-08-15 20:37:48.531
+!MESSAGE Widget is disposed
+!STACK 0
+org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4922)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:597)
+	at org.eclipse.swt.widgets.Widget.getDisplay(Widget.java:683)
+	at org.eclipse.oomph.ui.UICallback.execInUI(UICallback.java:52)
+	at org.eclipse.oomph.setup.impl.SetupTaskImpl.performUI(SetupTaskImpl.java:866)
+	at org.eclipse.oomph.setup.impl.PreferenceTaskImpl.perform(PreferenceTaskImpl.java:399)
+	at org.eclipse.oomph.setup.internal.core.SetupTaskPerformer.doPerformNeededSetupTasks(SetupTaskPerformer.java:3869)
+	at org.eclipse.oomph.setup.internal.core.SetupTaskPerformer$WorkspaceUtil$1.run(SetupTaskPerformer.java:5210)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2457)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2482)
+	at org.eclipse.oomph.setup.internal.core.SetupTaskPerformer$WorkspaceUtil.performNeededSetupTasks(SetupTaskPerformer.java:5203)
+	at org.eclipse.oomph.setup.internal.core.SetupTaskPerformer.performNeededSetupTasks(SetupTaskPerformer.java:3803)
+	at org.eclipse.oomph.setup.internal.core.SetupTaskPerformer.performTriggeredSetupTasks(SetupTaskPerformer.java:3778)
+	at org.eclipse.oomph.setup.internal.core.SetupTaskPerformer.perform(SetupTaskPerformer.java:3656)
+	at org.eclipse.oomph.setup.ui.wizards.ProgressPage$9.run(ProgressPage.java:592)
+	at org.eclipse.oomph.setup.ui.wizards.ProgressPage$11$1.run(ProgressPage.java:721)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2025-08-15 20:37:48.536
+!MESSAGE Setup tasks were performed during startup updating 542 preferences. See '/home/vix/eclipse/jee-2024-12/eclipse/configuration/org.eclipse.oomph.setup/setup.log' for details
+!SESSION 2025-08-15 20:37:49.655 -----------------------------------------------
+eclipse.buildId=4.34.0.20241128-0756
+java.version=23.0.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.eclemma.core 4 0 2025-08-15 20:37:52.426
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.eclemma.core [320]
+  Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+       org.jacoco.core [957]
+         Unresolved requirement: Import-Package: org.objectweb.asm.tree; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm.tree; bundle-symbolic-name="org.objectweb.asm.tree"; bundle-version="9.7.1"; version="9.7.1"; uses:="org.objectweb.asm,org.objectweb.asm.signature"
+              org.objectweb.asm.tree [969]
+                Unresolved requirement: Import-Package: org.objectweb.asm; version="9.7.1"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                     org.objectweb.asm [967]
+                       No resolution report for the bundle.                Unresolved requirement: Import-Package: org.objectweb.asm.signature; version="9.7.1"
+                  -> Export-Package: org.objectweb.asm.signature; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+         Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+  Unresolved requirement: Require-Bundle: org.jacoco.report; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.report; bundle-version="0.8.12.202403310830"
+       org.jacoco.report [958]
+         Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+         Unresolved requirement: Import-Package: org.jacoco.core.data; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.data; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.internal.data"
+         Unresolved requirement: Import-Package: org.jacoco.core.runtime; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.runtime; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.objectweb.asm"
+         Unresolved requirement: Import-Package: org.jacoco.core; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"
+         Unresolved requirement: Import-Package: org.jacoco.core.analysis; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.analysis; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.jacoco.core.internal.analysis"
+  Unresolved requirement: Require-Bundle: org.jacoco.agent; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.agent; bundle-version="0.8.12.202403310830"
+       org.jacoco.agent [956]
+         No resolution report for the bundle.  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"] because it is exposed to package 'org.objectweb.asm' from resources org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"] and org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"] via two dependency chains.
+
+Chain 1:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"]
+
+Chain 2:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm.commons)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package=org.objectweb.asm.commons; uses:=org.objectweb.asm
+  org.objectweb.asm.commons [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm.commons"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(version>=9.7.1))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"]
+	at org.eclipse.osgi.container.Module.start(Module.java:493)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2102)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:143)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2093)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2033)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1996)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1912)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.eclipse.eclemma.ui 4 0 2025-08-15 20:37:52.453
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.eclemma.ui [322]
+  Unresolved requirement: Require-Bundle: org.eclipse.eclemma.core
+    -> Bundle-SymbolicName: org.eclipse.eclemma.core; bundle-version="3.1.9.202405260028"; singleton:="true"
+       org.eclipse.eclemma.core [320]
+         Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+              org.jacoco.core [957]
+                Unresolved requirement: Import-Package: org.objectweb.asm.tree; version="[9.7.0,9.8.0)"
+                  -> Export-Package: org.objectweb.asm.tree; bundle-symbolic-name="org.objectweb.asm.tree"; bundle-version="9.7.1"; version="9.7.1"; uses:="org.objectweb.asm,org.objectweb.asm.signature"
+                     org.objectweb.asm.tree [969]
+                       Unresolved requirement: Import-Package: org.objectweb.asm; version="9.7.1"
+                         -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                            org.objectweb.asm [967]
+                              No resolution report for the bundle.                       Unresolved requirement: Import-Package: org.objectweb.asm.signature; version="9.7.1"
+                         -> Export-Package: org.objectweb.asm.signature; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+         Unresolved requirement: Require-Bundle: org.jacoco.report; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.report; bundle-version="0.8.12.202403310830"
+              org.jacoco.report [958]
+                Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                Unresolved requirement: Import-Package: org.jacoco.core.data; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.data; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.internal.data"
+                Unresolved requirement: Import-Package: org.jacoco.core.runtime; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.runtime; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.objectweb.asm"
+                Unresolved requirement: Import-Package: org.jacoco.core; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"
+                Unresolved requirement: Import-Package: org.jacoco.core.analysis; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.analysis; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.jacoco.core.internal.analysis"
+         Unresolved requirement: Require-Bundle: org.jacoco.agent; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.agent; bundle-version="0.8.12.202403310830"
+              org.jacoco.agent [956]
+                No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"] because it is exposed to package 'org.objectweb.asm' from resources org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"] and org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"] via two dependency chains.
+
+Chain 1:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"]
+
+Chain 2:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm.commons)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package=org.objectweb.asm.commons; uses:=org.objectweb.asm
+  org.objectweb.asm.commons [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm.commons"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(version>=9.7.1))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"]
+	at org.eclipse.osgi.container.Module.start(Module.java:493)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2102)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:143)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2093)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2033)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1996)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1912)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-15 20:37:52.603
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.equinox.app 0 0 2025-08-15 20:37:53.104
+!MESSAGE Product org.eclipse.epp.package.jee.product could not be found.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-15 20:37:55.871
+!MESSAGE Logback config file: /home/vix/Desktop/ResumeProjects/TaskManager/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.0.20241001-1350.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-08-15 20:37:56.347
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-08-15 20:37:56.347
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-08-15 20:37:56.681
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-08-15 20:37:56.682
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2025-08-15 20:38:08.865
+!MESSAGE Setup tasks were performed during startup updating 542 preferences. See '/home/vix/eclipse/jee-2024-12/eclipse/configuration/org.eclipse.oomph.setup/setup.log' for details
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-08-15 20:41:25.904
+!MESSAGE Unexpected null value present!
+!STACK 0
+java.lang.IllegalStateException: Unexpected null value present!
+	at org.eclipse.lsp4e.internal.NullSafetyHelper.castNonNull(NullSafetyHelper.java:36)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticTokensClient.requestFullSemanticTokens(SemanticTokensClient.java:45)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.fullReconcile(SemanticHighlightReconcilerStrategy.java:239)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.initialReconcile(SemanticHighlightReconcilerStrategy.java:258)
+	at org.eclipse.ui.internal.genericeditor.CompositeReconcilerStrategy.initialReconcile(CompositeReconcilerStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.Reconciler.initialProcess(Reconciler.java:223)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:177)
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-08-15 20:50:33.755
+!MESSAGE Unable to compute end of document
+!STACK 0
+org.eclipse.jface.text.BadLocationException: 426
+	at org.eclipse.jface.text.TreeLineTracker.lineByOffset(TreeLineTracker.java:268)
+	at org.eclipse.jface.text.TreeLineTracker.getLineNumberOfOffset(TreeLineTracker.java:1112)
+	at org.eclipse.jface.text.AbstractLineTracker.getLineNumberOfOffset(AbstractLineTracker.java:246)
+	at org.eclipse.jface.text.AbstractDocument.getLineOfOffset(AbstractDocument.java:863)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.getLineOfOffset(SynchronizableDocument.java:334)
+	at org.eclipse.lsp4e.LSPEclipseUtils.toPosition(LSPEclipseUtils.java:201)
+	at org.eclipse.lsp4e.operations.inlayhint.InlayHintProvider.provideCodeMinings(InlayHintProvider.java:46)
+	at org.eclipse.lsp4e.operations.inlayhint.InlayHintProvider.provideCodeMinings(InlayHintProvider.java:89)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.lambda$2(CodeMiningManager.java:191)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:215)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.getCodeMinings(CodeMiningManager.java:197)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.updateCodeMinings(CodeMiningManager.java:142)
+	at org.eclipse.jface.internal.text.codemining.CodeMiningManager.run(CodeMiningManager.java:131)
+	at org.eclipse.jface.text.source.SourceViewer.updateCodeMinings(SourceViewer.java:1333)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaCodeMiningReconciler.reconciled(JavaCodeMiningReconciler.java:51)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.reconciled(CompilationUnitEditor.java:1685)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconciled(JavaReconcilingStrategy.java:228)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconciled(JavaCompositeReconcilingStrategy.java:171)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:115)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.lsp4e 2 0 2025-08-15 21:25:21.011
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:430)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2140)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:66)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+!SESSION 2025-08-16 16:31:16.655 -----------------------------------------------
+eclipse.buildId=4.34.0.20241128-0756
+java.version=23.0.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.eclemma.core 4 0 2025-08-16 16:31:19.635
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.eclemma.core [320]
+  Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+       org.jacoco.core [957]
+         Unresolved requirement: Import-Package: org.objectweb.asm.tree; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm.tree; bundle-symbolic-name="org.objectweb.asm.tree"; bundle-version="9.7.1"; version="9.7.1"; uses:="org.objectweb.asm,org.objectweb.asm.signature"
+              org.objectweb.asm.tree [969]
+                Unresolved requirement: Import-Package: org.objectweb.asm.signature; version="9.7.1"
+                  -> Export-Package: org.objectweb.asm.signature; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                     org.objectweb.asm [967]
+                       No resolution report for the bundle.                Unresolved requirement: Import-Package: org.objectweb.asm; version="9.7.1"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+         Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+  Unresolved requirement: Require-Bundle: org.jacoco.agent; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.agent; bundle-version="0.8.12.202403310830"
+       org.jacoco.agent [956]
+         No resolution report for the bundle.  Unresolved requirement: Require-Bundle: org.jacoco.report; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.report; bundle-version="0.8.12.202403310830"
+       org.jacoco.report [958]
+         Unresolved requirement: Import-Package: org.jacoco.core.runtime; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.runtime; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.objectweb.asm"
+         Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+           -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+         Unresolved requirement: Import-Package: org.jacoco.core.analysis; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.analysis; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.jacoco.core.internal.analysis"
+         Unresolved requirement: Import-Package: org.jacoco.core.data; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core.data; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.internal.data"
+         Unresolved requirement: Import-Package: org.jacoco.core; version="[0.8.12,0.8.13)"
+           -> Export-Package: org.jacoco.core; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"] because it is exposed to package 'org.objectweb.asm' from resources org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"] and org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"] via two dependency chains.
+
+Chain 1:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"]
+
+Chain 2:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm.commons)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package=org.objectweb.asm.commons; uses:=org.objectweb.asm
+  org.objectweb.asm.commons [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm.commons"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(version>=9.7.1))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"]
+	at org.eclipse.osgi.container.Module.start(Module.java:493)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2102)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:143)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2093)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2033)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1996)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1912)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.eclipse.eclemma.ui 4 0 2025-08-16 16:31:19.680
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.eclemma.ui [322]
+  Unresolved requirement: Require-Bundle: org.eclipse.eclemma.core
+    -> Bundle-SymbolicName: org.eclipse.eclemma.core; bundle-version="3.1.9.202405260028"; singleton:="true"
+       org.eclipse.eclemma.core [320]
+         Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+              org.jacoco.core [957]
+                Unresolved requirement: Import-Package: org.objectweb.asm.tree; version="[9.7.0,9.8.0)"
+                  -> Export-Package: org.objectweb.asm.tree; bundle-symbolic-name="org.objectweb.asm.tree"; bundle-version="9.7.1"; version="9.7.1"; uses:="org.objectweb.asm,org.objectweb.asm.signature"
+                     org.objectweb.asm.tree [969]
+                       Unresolved requirement: Import-Package: org.objectweb.asm.signature; version="9.7.1"
+                         -> Export-Package: org.objectweb.asm.signature; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                            org.objectweb.asm [967]
+                              No resolution report for the bundle.                       Unresolved requirement: Import-Package: org.objectweb.asm; version="9.7.1"
+                         -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+         Unresolved requirement: Require-Bundle: org.jacoco.agent; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.agent; bundle-version="0.8.12.202403310830"
+              org.jacoco.agent [956]
+                No resolution report for the bundle.         Unresolved requirement: Require-Bundle: org.jacoco.report; bundle-version="[0.8.12,0.8.13)"
+           -> Bundle-SymbolicName: org.jacoco.report; bundle-version="0.8.12.202403310830"
+              org.jacoco.report [958]
+                Unresolved requirement: Import-Package: org.jacoco.core.runtime; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.runtime; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.objectweb.asm"
+                Unresolved requirement: Import-Package: org.objectweb.asm; version="[9.7.0,9.8.0)"
+                  -> Export-Package: org.objectweb.asm; bundle-symbolic-name="org.objectweb.asm"; bundle-version="9.7.1"; version="9.7.1"
+                Unresolved requirement: Import-Package: org.jacoco.core.analysis; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.analysis; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.data,org.jacoco.core.internal.analysis"
+                Unresolved requirement: Import-Package: org.jacoco.core.data; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core.data; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"; uses:="org.jacoco.core.internal.data"
+                Unresolved requirement: Import-Package: org.jacoco.core; version="[0.8.12,0.8.13)"
+                  -> Export-Package: org.jacoco.core; bundle-symbolic-name="org.jacoco.core"; bundle-version="0.8.12.202403310830"; version="0.8.12"
+  Unresolved requirement: Require-Bundle: org.jacoco.core; bundle-version="[0.8.12,0.8.13)"
+    -> Bundle-SymbolicName: org.jacoco.core; bundle-version="0.8.12.202403310830"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"] because it is exposed to package 'org.objectweb.asm' from resources org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"] and org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"] via two dependency chains.
+
+Chain 1:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm"]
+
+Chain 2:
+  org.jacoco.core [osgi.identity; type="osgi.bundle"; version:Version="0.8.12.202403310830"; osgi.identity="org.jacoco.core"]
+    import: (&(osgi.wiring.package=org.objectweb.asm.commons)(&(version>=9.7.0)(!(version>=9.8.0))))
+     |
+    export: osgi.wiring.package=org.objectweb.asm.commons; uses:=org.objectweb.asm
+  org.objectweb.asm.commons [osgi.identity; type="osgi.bundle"; version:Version="9.7.1"; osgi.identity="org.objectweb.asm.commons"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(version>=9.7.1))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"]
+	at org.eclipse.osgi.container.Module.start(Module.java:493)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2102)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:143)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2093)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2033)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1996)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1912)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-16 16:31:19.844
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.equinox.app 0 0 2025-08-16 16:31:20.356
+!MESSAGE Product org.eclipse.epp.package.jee.product could not be found.
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-08-16 16:31:22.530
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-08-16 16:31:22.956
+!MESSAGE Logback config file: /home/vix/Desktop/ResumeProjects/TaskManager/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.0.20241001-1350.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-08-16 16:31:23.278
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-08-16 16:31:23.278
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-08-16 16:31:23.547
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-08-16 16:31:23.547
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2025-08-16 16:31:36.925
+!MESSAGE Setup tasks were performed during startup updating 542 preferences. See '/home/vix/eclipse/jee-2024-12/eclipse/configuration/org.eclipse.oomph.setup/setup.log' for details
+
+!ENTRY org.eclipse.jface 2 0 2025-08-16 16:48:54.886
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2025-08-16 16:48:54.886
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.navigate.open.type"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolInWorkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.lsp4e.symbolInWorkspace"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-08-16 16:51:12.254
+!MESSAGE Unexpected null value present!
+!STACK 0
+java.lang.IllegalStateException: Unexpected null value present!
+	at org.eclipse.lsp4e.internal.NullSafetyHelper.castNonNull(NullSafetyHelper.java:36)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticTokensClient.requestFullSemanticTokens(SemanticTokensClient.java:45)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.fullReconcile(SemanticHighlightReconcilerStrategy.java:239)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.initialReconcile(SemanticHighlightReconcilerStrategy.java:258)
+	at org.eclipse.ui.internal.genericeditor.CompositeReconcilerStrategy.initialReconcile(CompositeReconcilerStrategy.java:48)
+	at org.eclipse.jface.text.reconciler.Reconciler.initialProcess(Reconciler.java:223)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:177)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2025-08-16 16:52:15.464
+!MESSAGE Argument not valid
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4903)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.custom.StyledText.setStyleRanges(StyledText.java:10185)
+	at org.eclipse.swt.custom.StyledText.replaceStyleRanges(StyledText.java:7731)
+	at org.eclipse.jface.text.TextViewer.addPresentation(TextViewer.java:4782)
+	at org.eclipse.jface.text.TextViewer.changeTextPresentation(TextViewer.java:4859)
+	at org.eclipse.tm4e.ui.text.Colorizer.colorize(Colorizer.java:168)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$TextViewerListener.textChanged(TMPresentationReconciler.java:273)
+	at org.eclipse.jface.text.TextViewer.updateTextListeners(TextViewer.java:2795)
+	at org.eclipse.jface.text.TextViewer.invalidateTextPresentation(TextViewer.java:3415)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.lambda$1(SemanticHighlightReconcilerStrategy.java:217)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5042)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4522)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:663)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:570)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:178)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1454)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2025-08-16 16:52:16.985
+!MESSAGE Argument not valid
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4903)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.custom.StyledText.setStyleRanges(StyledText.java:10185)
+	at org.eclipse.swt.custom.StyledText.replaceStyleRanges(StyledText.java:7731)
+	at org.eclipse.jface.text.TextViewer.addPresentation(TextViewer.java:4782)
+	at org.eclipse.jface.text.TextViewer.changeTextPresentation(TextViewer.java:4859)
+	at org.eclipse.tm4e.ui.text.Colorizer.colorize(Colorizer.java:168)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$TextViewerListener.textChanged(TMPresentationReconciler.java:273)
+	at org.eclipse.jface.text.TextViewer.updateTextListeners(TextViewer.java:2795)
+	at org.eclipse.jface.text.TextViewer.invalidateTextPresentation(TextViewer.java:3439)
+	at org.eclipse.jface.text.source.AnnotationPainter.invalidateTextPresentation(AnnotationPainter.java:976)
+	at org.eclipse.jface.text.source.AnnotationPainter.updatePainting(AnnotationPainter.java:958)
+	at org.eclipse.jface.text.source.AnnotationPainter.lambda$0(AnnotationPainter.java:1081)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5042)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4522)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:663)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:570)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:178)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1454)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2025-08-16 16:52:20.563
+!MESSAGE Argument not valid
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4903)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.custom.StyledText.setStyleRanges(StyledText.java:10185)
+	at org.eclipse.swt.custom.StyledText.replaceStyleRanges(StyledText.java:7731)
+	at org.eclipse.jface.text.TextViewer.addPresentation(TextViewer.java:4782)
+	at org.eclipse.jface.text.TextViewer.changeTextPresentation(TextViewer.java:4859)
+	at org.eclipse.tm4e.ui.text.Colorizer.colorize(Colorizer.java:168)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$TextViewerListener.textChanged(TMPresentationReconciler.java:273)
+	at org.eclipse.jface.text.TextViewer.updateTextListeners(TextViewer.java:2795)
+	at org.eclipse.jface.text.TextViewer.invalidateTextPresentation(TextViewer.java:3415)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.lambda$1(SemanticHighlightReconcilerStrategy.java:217)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5042)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4522)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:663)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:570)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:178)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1454)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2025-08-16 16:52:24.352
+!MESSAGE Argument not valid
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4903)
+	at org.eclipse.swt.SWT.error(SWT.java:4837)
+	at org.eclipse.swt.SWT.error(SWT.java:4808)
+	at org.eclipse.swt.custom.StyledText.setStyleRanges(StyledText.java:10185)
+	at org.eclipse.swt.custom.StyledText.replaceStyleRanges(StyledText.java:7731)
+	at org.eclipse.jface.text.TextViewer.addPresentation(TextViewer.java:4782)
+	at org.eclipse.jface.text.TextViewer.changeTextPresentation(TextViewer.java:4859)
+	at org.eclipse.tm4e.ui.text.Colorizer.colorize(Colorizer.java:168)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$TextViewerListener.textChanged(TMPresentationReconciler.java:273)
+	at org.eclipse.jface.text.TextViewer.updateTextListeners(TextViewer.java:2795)
+	at org.eclipse.jface.text.TextViewer.invalidateTextPresentation(TextViewer.java:3415)
+	at org.eclipse.lsp4e.operations.semanticTokens.SemanticHighlightReconcilerStrategy.lambda$1(SemanticHighlightReconcilerStrategy.java:217)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5042)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4522)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:663)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:570)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:178)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1454)

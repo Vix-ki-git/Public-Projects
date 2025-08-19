@@ -1,0 +1,11 @@
+package com.taskmanager.backend.model;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Task {
+	@Id
+	@GeneratedStrategy(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+}
